@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Gestión Agrícola</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .status { font-weight: bold; padding: 5px 10px; border-radius: 4px; display: inline-block; }
+        .normal { background-color: #d4edda; color: #155724; }
+        .warning { background-color: #fff3cd; color: #856404; }
+        .danger { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+    <h1>🌱 Panel de Control - Sistema de Riego</h1>
+
+    <!-- Sección de Sensores -->
+    <div class="card">
+        <h2>Sensores</h2>
+        <p>Temperatura: <strong><span id="temp">--</span> °C</strong></p>
+        <p>Humedad del suelo: <strong><span id="humedad">--</span> %</strong></p>
+    </div>
+
+    <!-- Sección de Estado de Indicadores -->
+    <div class="card">
+        <h2>Estado del Sistema</h2>
+        <p>Estado actual: <span id="estado" class="status normal">Cargando...</span></p>
+    </div>
+
+    <!-- Sección de Actuadores -->
+    <div class="card">
+        <h2>Actuadores</h2>
+        <p>Motobomba: <strong><span id="bomba">APAGADA</span></strong></p>
+    </div>
+
+    <script>
+        // Aquí conectaremos los datos simulados o el backend en Java más adelante
+        document.getElementById('temp').textContent = '25';
+        document.getElementById('humedad').textContent = '50';
+        document.getElementById('estado').textContent = 'ADVERTENCIA';
+        document.getElementById('estado').className = 'status warning';
+    </script>
+
+</body>
+</html>
