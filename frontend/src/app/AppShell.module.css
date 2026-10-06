@@ -1,0 +1,52 @@
+.workspace {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.brand {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.navigation a {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.navigation a.active {
+  color: white;
+  background: var(--accent);
+}
+
+.content {
+  min-width: 0;
+}
+
+.skipLink {
+  position: absolute;
+  transform: translateY(-200%);
+  padding: 0.75rem;
+  background: var(--surface);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
