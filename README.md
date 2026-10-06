@@ -1,11 +1,11 @@
-# Irrigation system
+# Irrigation system — auth team
 
-Shared React + Vite + TypeScript frontend with isolated dashboard, management, and authentication modules.
+`team/auth` is the auth team's handoff branch. The team owns the login UI, backend, and NoSQL database. Current `/login` and `/register` pages are public placeholders, not authentication.
 
-Start with [the project guide](doc/README.md). All project guides live in `doc/`:
+Start with [the auth handoff guide](doc/team-guide.md). Common references:
 
 - [Setup, commands, and team ownership](doc/README.md)
 - [Frontend architecture and collaboration](doc/frontend-architecture.md)
 - [Runtime and development dependencies](doc/dependencies.md)
 
-The backend and NoSQL database belong to the auth team. Current module pages are placeholders, not implemented features.
+Frontend work belongs in `frontend/src/modules/auth/`. Backend technology, code location, and integration contracts remain pending; this documentation adds no application behavior.
