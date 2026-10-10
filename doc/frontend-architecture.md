@@ -77,7 +77,7 @@ The root route redirects to `/dashboard`. An unknown route shows a not-found pag
 
 ## Backend integration boundary
 
-The auth team owns the backend, the NoSQL database, and authentication UI. The management and dashboard teams consume the agreed backend interfaces; they do not access the database using administrative credentials.
+The auth team owns the existing Express API, its NoSQL database integration, and authentication UI. API code belongs in `backend/`, with its own manifests and configuration; it has not yet been imported here. See [the backend import and database guide](backend.md). The management and dashboard teams consume the agreed API interfaces; they do not access the database using administrative credentials.
 
 Before connecting real data, agree on:
 

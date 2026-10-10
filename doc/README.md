@@ -1,8 +1,8 @@
 # Irrigation system
 
-A shared React + Vite + TypeScript frontend with separate dashboard, management, and authentication modules. The auth team owns the backend and NoSQL database; this repository does not choose their server framework or database engine.
+A shared React + Vite + TypeScript frontend with separate dashboard, management, and authentication modules. The auth team owns an existing Express API and NoSQL database. `backend/` is reserved for importing that API; its implementation, database engine, and connection details have not been supplied here. See [the backend guide](backend.md).
 
-## Quick start
+## Quick start (frontend)
 
 Use Node.js 24 LTS and npm. From the repository root:
 
@@ -19,7 +19,7 @@ Open the URL printed by Vite. The default route opens the dashboard. All module 
 | --- | --- | --- |
 | Dashboard | `frontend/src/modules/dashboard/` | `/dashboard` |
 | Management | `frontend/src/modules/management/` | `/management` |
-| Auth | `frontend/src/modules/auth/` | `/login`, `/register` |
+| Auth | `frontend/src/modules/auth/`, `backend/`, `doc/backend.md` | `/login`, `/register`; API routes documented by the team |
 | Shared integration | `frontend/src/app/`, `frontend/src/shared/`, tooling and dependency files | Coordinate changes across teams |
 
 Each team works inside its module. Shared navigation and UI belong to the common application, not to any one feature. These are code-ownership boundaries, not independent applications or security isolation.
@@ -28,7 +28,7 @@ Read [the frontend architecture and collaboration guide](frontend-architecture.m
 
 ## Commands
 
-Run from the repository root:
+These commands run the frontend only, from the repository root. They do not start or test the Express API:
 
 | Command | Purpose |
 | --- | --- |
@@ -44,7 +44,8 @@ The frontend has its own `package.json` and committed lockfile. The root package
 
 ## Repository layout
 
-- `frontend/`: application source, tooling, and dependency manifests.
+- `frontend/`: browser application source, tooling, and dependency manifests.
+- `backend/`: landing area for the auth team's existing Express API and its separate manifests.
 - `doc/`: project setup, architecture, dependency policies, and team guides.
 - `odd/tasks/`: implementation tracking; its authoritative state belongs to the foundation branch.
 

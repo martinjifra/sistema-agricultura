@@ -1,13 +1,13 @@
 # Auth team handoff
 
-Work on `team/auth` inside `frontend/src/modules/auth/`. The auth group owns the login UI, backend, and NoSQL database. This branch adds documentation only; it does not implement authentication.
+Work on `team/auth` inside `frontend/src/modules/auth/` for UI and `backend/` for the team's existing Express API. The auth group owns the login UI and NoSQL database integration. The backend landing area contains no server implementation yet; frontend authentication remains a placeholder.
 
 ## Quick path
 
 1. Follow [common setup and commands](README.md) using Node.js 24 LTS and npm.
 2. Read [architecture boundaries](frontend-architecture.md) and [dependency policy](dependencies.md).
 3. Run `npm run dev` from the repository root and visit `/login` and `/register`.
-4. Agree on the pending backend contracts below before implementing integration.
+4. Follow [the backend import and database guide](backend.md) to bring the existing Express API into `backend/`, then agree on the remaining contracts before frontend integration.
 
 ## Current frontend contract
 
@@ -25,7 +25,8 @@ The application consumes the public `index.ts` entry, not internal pages. Keep `
 
 ## Ownership and cross-team boundaries
 
-- Keep auth-specific UI, future services, types, and behavior tests in `frontend/src/modules/auth/`; add internal folders only when needed.
+- Keep auth-specific UI, services, types, and behavior tests in `frontend/src/modules/auth/`; add internal folders only when needed.
+- Keep the existing Express API and its separate manifests in `backend/`. The auth team owns its database connection and setup instructions in `doc/backend.md`; do not copy server dependencies into the frontend.
 - Import only this module's internals or domain-neutral `shared` code. Do not import `app` or dashboard/management internals.
 - Coordinate changes to `frontend/src/app/`, `frontend/src/shared/`, tooling, configuration, and dependencies with all teams. The app imports modules through their public entries.
 - Dashboard and management consume agreed backend interfaces. They do not access the database with administrative credentials or build separate backends.
@@ -33,16 +34,16 @@ The application consumes the public `index.ts` entry, not internal pages. Keep `
 
 ## Pending decisions
 
-Ownership is agreed; implementation contracts are not. Resolve these with the consuming teams before adding real behavior:
+Ownership, Express, and the backend location are agreed. The team's API/database already exist outside this scaffold, but their files and integration details have not been supplied here:
 
 | Decision | Status |
 | --- | --- |
-| Backend framework and backend code location | Pending; no framework or repository directory selected |
-| NoSQL database engine and data models | Pending; no engine or schema selected |
-| API locations, request/response shapes, and errors | Pending; no endpoints selected |
-| Session transport, lifecycle, and token handling | Pending; no storage or session flow selected |
-| Permissions and route-protection responsibilities | Pending; no authorization rules selected |
-| Dashboard/management data interfaces and realtime needs | Pending; no protocol selected |
+| Backend framework and code location | Express in `backend/`; existing API source awaiting import |
+| NoSQL engine, hosting, and data models | Team's existing setup not yet documented here |
+| API locations, request/response shapes, and errors | Existing contracts must be supplied by the team |
+| Session transport, lifecycle, and token handling | Existing behavior must be documented for frontend integration |
+| Permissions and route-protection responsibilities | Confirm with the consuming teams |
+| Dashboard/management data interfaces and realtime needs | Confirm from the real API; no protocol assumed |
 
 Do not infer these choices from React, Vite, or the existence of login/register routes. This handoff adds no forms, guards, tokens, data models, server implementation, or session flows.
 
