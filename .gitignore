@@ -1,12 +1,18 @@
-node_modules/
-dist/
-coverage/
-.cache/
-.atl/
-.playwright-mcp/
-.worktrees/
+# Variables de entorno
 .env
-.env.*
-!.env.example
-.DS_Store
+backend/.env
+frontend/.env
+
+# Dependencias
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# MongoDB local
+data/
+
+# Build
+frontend/dist/
+
+# Logs
 *.log

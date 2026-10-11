@@ -1,0 +1,224 @@
+.loginPage {
+  display: grid;
+  min-height: calc(100vh - 10rem);
+  place-items: center;
+  padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+}
+
+.loginCard {
+  width: min(100%, 68rem);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow: 0 1.5rem 4rem rgb(24 54 43 / 12%);
+}
+
+.loginLayout {
+  display: grid;
+  min-height: 39rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+}
+
+.loginFormPanel {
+  display: grid;
+  align-items: center;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.loginContent {
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 auto;
+}
+
+.loginBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 2.25rem;
+}
+
+.registroBrand {
+  margin-bottom: 1.5rem;
+}
+
+.loginLogo {
+  width: 3.25rem;
+  height: 3.25rem;
+  object-fit: contain;
+}
+
+.loginTitle {
+  margin: 0;
+  color: var(--accent);
+  font-size: clamp(0.95rem, 1.7vw, 1.25rem);
+  letter-spacing: 0.045em;
+  line-height: 1.4;
+}
+
+.loginPrompt {
+  margin: 0 0 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.loginField {
+  margin-bottom: 1rem;
+}
+
+.loginFieldPassword {
+  margin-bottom: 1.25rem;
+}
+
+.loginInput {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+}
+
+.loginInput::placeholder {
+  color: #64776d;
+}
+
+.loginInput:focus {
+  border-color: var(--accent);
+  outline: 2px solid rgb(24 92 59 / 16%);
+}
+
+.authMessage {
+  margin: 0.75rem 0;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.5rem;
+  line-height: 1.45;
+}
+
+.authMessageSuccess {
+  padding: 0;
+  background: transparent;
+  color: #185c3b;
+}
+
+.authMessageError {
+  background: #fff0ee;
+  color: #9b2c20;
+}
+
+.loginSubmitWrapper {
+  margin-top: 1.5rem;
+}
+
+.loginSubmit {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.loginSubmit:hover:not(:disabled) {
+  background: #12492e;
+}
+
+.loginSubmit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.loginForgotWrapper {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.loginForgot {
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.loginForgot:hover,
+.registroLoginLink a:hover {
+  text-decoration: underline;
+}
+
+.loginRegister {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.loginRegisterPrompt {
+  margin: 0;
+}
+
+.loginRegisterButton {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.5rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+}
+
+.loginRegisterButton:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.registroLoginLink {
+  margin: 1.5rem 0 0;
+  text-align: center;
+}
+
+.loginImagePanel {
+  min-height: 100%;
+  background: #dce9df;
+}
+
+.loginImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 39rem;
+  object-fit: cover;
+}
+
+@media (max-width: 48rem) {
+  .loginPage {
+    min-height: auto;
+  }
+
+  .loginCard {
+    width: min(100%, 34rem);
+  }
+
+  .loginLayout {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .loginFormPanel {
+    padding: clamp(1.5rem, 7vw, 2.5rem);
+  }
+
+  .loginImagePanel {
+    display: none;
+  }
+}

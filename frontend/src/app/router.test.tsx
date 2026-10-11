@@ -29,22 +29,30 @@ describe('shared frontend shell', () => {
     await screen.findByRole('heading', { name: 'Management', level: 1 })
     expect(router.state.location.pathname).toBe('/management')
     await user.click(screen.getByRole('link', { name: 'Authentication' }))
-    await screen.findByRole('heading', { name: 'Login', level: 1 })
+    await screen.findByRole('heading', { name: 'SISTEMA DE AGRICULTURA', level: 1 })
+    expect(screen.getByPlaceholderText('Correo electrónico')).toBeTruthy()
     expect(router.state.location.pathname).toBe('/login')
-    await user.click(screen.getByRole('link', { name: 'Register' }))
-    await screen.findByRole('heading', { name: 'Register', level: 1 })
+    await user.click(screen.getByRole('link', { name: 'CREAR CUENTA' }))
+    await screen.findByPlaceholderText('Confirma tu contraseña')
     expect(router.state.location.pathname).toBe('/register')
   })
 
   it.each([
     ['/dashboard', 'Dashboard'],
     ['/management', 'Management'],
-    ['/login', 'Login'],
-    ['/register', 'Register'],
   ])('supports direct loading of %s', async (path, title) => {
     open(path)
     await screen.findByRole('heading', { name: title, level: 1 })
     expect(screen.getByText('This module is a placeholder. No backend is connected.')).toBeTruthy()
+  })
+
+  it.each([
+    ['/login', 'Contraseña'],
+    ['/register', 'Confirma tu contraseña'],
+  ])('supports direct loading of the auth form at %s', async (path, placeholder) => {
+    open(path)
+    await screen.findByRole('heading', { name: 'SISTEMA DE AGRICULTURA', level: 1 })
+    expect(screen.getByPlaceholderText(placeholder)).toBeTruthy()
   })
 
   it('keeps navigation available for unknown routes', async () => {
