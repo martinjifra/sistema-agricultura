@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "68e900000000000000000201",
+    "ubicacion": "Invernadero 1",
+    "tipo_sensor": "temperatura",
+    "estado": "activo"
+  },
+  {
+    "_id": "68e900000000000000000202",
+    "ubicacion": "Cultivo de tomates",
+    "tipo_sensor": "humedad",
+    "estado": "activo"
+  },
+  {
+    "_id": "68e900000000000000000203",
+    "ubicacion": "Invernadero 1",
+    "tipo_sensor": "luminosidad",
+    "estado": "activo"
+  }
+]

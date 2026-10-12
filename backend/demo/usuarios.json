@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "68e900000000000000000101",
+    "nombre": "Administrador Demo",
+    "correo": "admin@demo.com",
+    "contraseña": "CONTRASEÑA_CIFRADA",
+    "id_rol": "68e900000000000000000001"
+  },
+  {
+    "_id": "68e900000000000000000102",
+    "nombre": "Visualizador Demo",
+    "correo": "visualizador@demo.com",
+    "contraseña": "CONTRASEÑA_CIFRADA",
+    "id_rol": "68e900000000000000000002"
+  }
+]
