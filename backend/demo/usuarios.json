@@ -1,16 +1,14 @@
 [
   {
-    "_id": "68e900000000000000000101",
     "nombre": "Administrador Demo",
     "correo": "admin@demo.com",
-    "contraseña": "CONTRASEÑA_CIFRADA",
-    "id_rol": "68e900000000000000000001"
+    "contraseña": "123456",
+    "rol": "administrador"
   },
   {
-    "_id": "68e900000000000000000102",
     "nombre": "Visualizador Demo",
     "correo": "visualizador@demo.com",
-    "contraseña": "CONTRASEÑA_CIFRADA",
-    "id_rol": "68e900000000000000000002"
+    "contraseña": "123456",
+    "rol": "visualizador"
   }
 ]
