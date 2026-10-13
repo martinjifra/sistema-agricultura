@@ -44,7 +44,10 @@ describe('shared frontend shell', () => {
   ])('supports direct loading of %s', async (path, title) => {
     open(path)
     await screen.findByRole('heading', { name: title, level: 1 })
-    expect(screen.getByText('This module is a placeholder. No backend is connected.')).toBeTruthy()
+    const content = path === '/dashboard'
+      ? 'Datos demo'
+      : 'This module is a placeholder. No backend is connected.'
+    expect(screen.getByText(content)).toBeTruthy()
   })
 
   it('keeps navigation available for unknown routes', async () => {

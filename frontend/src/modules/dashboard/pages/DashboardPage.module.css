@@ -1,0 +1,273 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  grid-template-areas:
+    "header header"
+    "notice notice"
+    "cards cards"
+    "analytics history";
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading {
+  margin: 0 0 0.25rem;
+  font-size: 1.65rem;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  margin: 0;
+  color: #53695e;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.demoBadge {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #dcc779;
+  border-radius: 999px;
+  background: #fff6d8;
+  color: #695100;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.notice {
+  grid-area: notice;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d1e4d7;
+  border-radius: 0.6rem;
+  background: #e8f2eb;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.cards,
+.charts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.cards {
+  grid-area: cards;
+}
+
+.card,
+.history,
+.analytics {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--surface);
+  box-shadow: 0 3px 12px #18362b05;
+}
+
+.card {
+  padding: 0.75rem;
+}
+
+.selected {
+  border-color: var(--accent);
+  box-shadow: inset 0 3px var(--accent);
+}
+
+.cardTitle,
+.historyTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.value {
+  margin: 0.3rem 0 0.4rem;
+  color: var(--accent);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.4rem 0.75rem;
+  margin: 0 0 0.7rem;
+  font-size: 0.8rem;
+}
+
+.details dt {
+  color: #53695e;
+}
+
+.details dd {
+  margin: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.status {
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.35rem;
+  background: #e8f2eb;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.button {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #f4f7f5;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover,
+.selected .button {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+}
+
+.history {
+  grid-area: history;
+  align-self: stretch;
+}
+
+.analytics {
+  grid-area: analytics;
+  align-self: stretch;
+}
+
+.historyHeader {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.table th {
+  color: #53695e;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table th:last-child,
+.table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.chart {
+  min-width: 0;
+  margin: 0;
+  padding: 0.7rem 0.2rem 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: #fafcfb;
+}
+
+.chart figcaption {
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
+}
+
+.chartSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
+  overflow: visible;
+}
+
+.chartSvg text {
+  font-size: 16px;
+  fill: #53695e;
+}
+
+.gridLine {
+  stroke: var(--border);
+}
+
+.chartLine {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.chartPoint {
+  fill: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 1099px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "header" "notice" "cards" "history" "analytics";
+  }
+}
+
+@media (max-width: 650px) {
+  .cards,
+  .charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

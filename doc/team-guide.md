@@ -2,14 +2,14 @@
 
 Work on the visual dashboard inside `frontend/src/modules/dashboard/`. This guide belongs to `team/dashboard`, based on shared foundation commit `59b2ff7aea516d450b0fd4c60a6f1fc30abb617a`. It documents ownership and the existing scaffold, not a dashboard feature specification.
 
-**Current state:** `/dashboard` renders a public placeholder. No feature functionality is implemented and no backend is connected.
+**Current state:** `/dashboard` renders three sensor cards, historical SVG charts, and a selectable history table using local synthetic readings. `Datos demo` is always visible, and no backend is connected. See [demo data and screen behavior](dashboard-mocks.md).
 
 ## Quick path
 
 1. Follow [common setup](README.md#quick-start) using Node.js 24 LTS and npm.
 2. Run `npm run dev` from the repository root and open `/dashboard` at the URL Vite prints. `/` redirects there.
 3. Inspect [the module entry](../frontend/src/modules/dashboard/index.ts) and [DashboardPage](../frontend/src/modules/dashboard/pages/DashboardPage.tsx).
-4. Agree on the product and backend contracts below before replacing the placeholder. Follow [architecture boundaries](frontend-architecture.md) and [dependency policy](dependencies.md).
+4. Select `Ver historial` on a sensor card to inspect its readings. Follow [architecture boundaries](frontend-architecture.md), [dependency policy](dependencies.md), and the pending live-integration decisions below.
 
 ## Ownership and coordination
 
@@ -36,7 +36,7 @@ Coordinate before changing `frontend/src/app/`, `frontend/src/shared/`, `fronten
 
 [The module registry](../frontend/src/app/modules.ts) registers this export once. [The root router](../frontend/src/app/router.tsx) composes its routes under the shared shell, redirects `/` to `/dashboard`, and handles unknown paths. Keep this public entry and root path stable; coordinate navigation or route changes with the other teams and update affected tests together.
 
-`DashboardPage` currently delegates to the shared `ModulePlaceholder`, showing the Dashboard heading, team ownership, module path, and the statement that no backend is connected. There are no dashboard data requests, session checks, or permissions. Public placeholder routing does not decide eventual access rules.
+`DashboardPage` initializes a `createDashboardMocks()` snapshot and renders the latest reading and metadata for each sensor. Selection is local React state and changes the history table only. Sensor IDs remain separate; no grouped device model is invented. There are no dashboard data requests, session checks, or permissions. Public demo routing does not decide eventual access rules.
 
 ## Development and verification
 
@@ -56,20 +56,20 @@ Use function components and TypeScript. Keep styling in colocated CSS Modules; s
 
 For future functionality, add behavior-level tests alongside dashboard code using the configured Vitest and Testing Library tools. Cover agreed interactions, accessible labels and keyboard use, and relevant loading, empty, or error states once their behavior is defined. Check responsive layout in the browser; passing routing tests alone does not prove a finished visual dashboard.
 
-[Existing shell tests](../frontend/src/app/router.test.tsx) cover the default redirect, navigation, direct route loading, and unknown-route recovery. They currently expect placeholder text on direct entry. Coordinate updates to these shared tests when real screens replace placeholders; do not leave stale assertions or remove route coverage to make a change pass.
+[Existing shell tests](../frontend/src/app/router.test.tsx) cover the default redirect, navigation, direct route loading, and unknown-route recovery. They expect demo content at `/dashboard` and retain placeholder assertions for the other module entry points. [Dashboard page tests](../frontend/src/modules/dashboard/pages/DashboardPage.test.tsx) assert its cards, metadata, history ordering, selection and offline behavior. Do not remove shared route coverage to make changes pass.
 
-This handoff changes documentation only. Its checks are local-link resolution, whitespace validation, and documentation-only edit scope; it introduces no behavioral test or runtime feature.
+The current UI is the agreed demo: three sensor cards, latest values/metadata, three historical charts, a selectable history table, and a clear demo label. Charts show the fixed readings in chronological order, not live updates; agreeing on polling or streaming remains a separate backend integration decision. Its checks include functional tests, local-link/whitespace validation, and responsive browser verification.
 
-## Decisions required before implementation
+## Decisions required before live integration
 
-No detailed dashboard product or backend contract has been supplied. Resolve these with the relevant owners, rather than treating the scaffold as requirements:
+The initial demo scope is agreed. Resolve the remaining live-data requirements with the relevant owners:
 
-- **Product:** what the dashboard must display, its layout/content priorities, and any allowed user interactions or acceptance criteria.
+- **Product:** behavior beyond the demo, including loading/empty/error states when live responses are introduced.
 - **Data:** which dashboard information is available and who owns it; agreed API locations, response types, error shapes, and loading/empty/error behavior.
 - **Auth:** whether dashboard access requires a session or permissions, and how the frontend receives and uses the agreed session contract.
 - **Updates:** whether data needs realtime updates at all; if so, the backend protocol and authentication contract.
 
-Do not invent sensors, charts, irrigation controls, backend fields, endpoints, database schemas, or token-storage rules. Consume only agreed backend interfaces; never expose database credentials or server secrets in the browser. These decisions are not implemented by this documentation unit.
+Do not invent sensors, charts, irrigation controls, backend fields, endpoints, database schemas, or token-storage rules. Consume only agreed backend interfaces; never expose database credentials or server secrets in the browser. These live-data decisions are not implemented by the local demo screen.
 
 ## Review and delivery checklist
 
